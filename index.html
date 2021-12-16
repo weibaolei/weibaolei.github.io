@@ -210,7 +210,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="1、问题描述"><a href="#1、问题描述" class="headerlink" title="1、问题描述"></a>1、问题描述</h2><blockquote>
+          <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><blockquote>
 <p>最近在工作中经常使用 ElementUI 的表格组件，发现如果 EL-TABLE 组件的 EL-TABLE-COLUMN 加了 FIXED 属性列固定后样式后会出现高度错乱问题，这样会导致表格数据有被遮挡，bug样式及代码如下</p>
 </blockquote>
 <div style="float:left;border:solid1px000;margin:2px;">
@@ -220,10 +220,10 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-table</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-loading</span>=<span class="string">&quot;loading&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">:data</span>=<span class="string">&quot;configurationData&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">:row-class-name</span>=<span class="string">&quot;configurationRowClassName&quot;</span></span></span><br><span class="line"><span class="tag">  @<span class="attr">selection-change</span>=<span class="string">&quot;configurationDetailSelectionChange&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">stripe</span></span></span><br><span class="line"><span class="tag">  <span class="attr">style</span>=<span class="string">&quot;width: 100%&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">ref</span>=<span class="string">&quot;configurationTb&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">fixed</span>=<span class="string">&quot;left&quot;</span> <span class="attr">type</span>=<span class="string">&quot;selection&quot;</span> <span class="attr">width</span>=<span class="string">&quot;30&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">label</span>=<span class="string">&quot;id&quot;</span> <span class="attr">prop</span>=<span class="string">&quot;id&quot;</span> <span class="attr">v-if</span>=<span class="string">&quot;false&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-table-column</span></span></span><br><span class="line"><span class="tag">    <span class="attr">fixed</span>=<span class="string">&quot;left&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">label</span>=<span class="string">&quot;序号&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">align</span>=<span class="string">&quot;center&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">prop</span>=<span class="string">&quot;xh&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">width</span>=<span class="string">&quot;50&quot;</span></span></span><br><span class="line"><span class="tag">  &gt;</span>&lt;/el-table-column</span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
-<h2 id="2、问题分析"><a href="#2、问题分析" class="headerlink" title="2、问题分析"></a>2、问题分析</h2><blockquote>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><blockquote>
 <p>经过排查基本可以确定这个样式 bug 是因为 el-table 同时存在冻结列与滚动条导致的。<br>在列加入冻结列，即 <strong>fixed=”right”</strong> 或者<strong>fixed=”left”</strong> 之后，页面会增加缓存，再次切换回来就会导致高度没有计算 padding 值所有会出现高度错乱的问题，这样数据便会被遮挡。</p>
 </blockquote>
-<h2 id="3、解决方法"><a href="#3、解决方法" class="headerlink" title="3、解决方法"></a>3、解决方法</h2><blockquote>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><blockquote>
 <p>增加一个样式重新计算这部分高度来覆盖原有的样式</p>
 </blockquote>
 <ul>
@@ -238,7 +238,7 @@
 <blockquote>
 <p>修改后列表操作列最后一行成功显示完全</p>
 </blockquote>
-<h2 id="4、引申问题"><a href="#4、引申问题" class="headerlink" title="4、引申问题"></a>4、引申问题</h2><blockquote>
+<h2 id="引申问题"><a href="#引申问题" class="headerlink" title="引申问题"></a>引申问题</h2><blockquote>
 <p>冻结列与侧边滚动条会引起冻结列的错位，如下图的操作列与数据都出现了错位现象</p>
 </blockquote>
 <center class = "half">
