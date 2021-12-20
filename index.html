@@ -162,7 +162,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/16/null/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/20/12201/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -176,7 +176,136 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/16/null/" class="post-title-link" itemprop="url">element表格组件滚动条遮挡数据问题</a>
+            <a href="/2021/12/20/12201/" class="post-title-link" itemprop="url">el-table动态列导致数据错位问题解决</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-20 19:12:12 / 修改时间：22:02:21" itemprop="dateCreated datePublished" datetime="2021-12-20T19:12:12+08:00">2021-12-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">工作</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><pre><code>使用elementUI的el-table做列表动态列控制的时候，出现了表格列数据错位的样式bug，如下图所示。
+</code></pre>
+<div style="float:left;border:solid1px000;margin:20px,20px;">
+<img src=https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/table%E5%8A%A8%E6%80%81%E5%88%97%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E9%94%99%E4%BD%8D%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/%E5%8A%A8%E6%80%81.PNG />
+</div>
+
+<div style="float:left;border:solid1px000;margin:20px,20px;">
+<img src=https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/table%E5%8A%A8%E6%80%81%E5%88%97%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E9%94%99%E4%BD%8D%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/%E5%88%97%E9%94%99%E4%BD%8D%E6%A0%B7%E5%BC%8F1.PNG />
+</div>
+
+<div style="float:left;border:solid1px000;margin:20px,20px;">
+<img src=https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/table%E5%8A%A8%E6%80%81%E5%88%97%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E9%94%99%E4%BD%8D%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/%E5%88%97%E9%94%99%E4%BD%8D%E6%A0%B7%E5%BC%8F2.PNG />
+</div>
+
+<pre><code>第一张图片中的来源数据错位到后一列，第二张图中服务分类列宽度足够而数据却不显示
+</code></pre>
+<h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><blockquote>
+<p>在这里先上一下这个table的配置代码</p>
+</blockquote>
+<pre><code>&#123;% codeblock %&#125;
+        <el-table-column
+        :show-overflow-tooltip="tdWrap"
+        :align="x.align"
+        :header-align="x.headerAlign"
+        :key="idx"
+        :label="x.name"
+        :prop="x.sortModel"
+        :width="x.width"
+        :min-width="x.minWidth"
+        :fixed="x.fixed ? x.fixed : false"
+        v-for="(x,idx) in tableHeader"
+        v-if="x.hidden"
+        :sortable="x.sort === true ? 'custom' : false"
+        >
+    &#123;% endcodeblock %&#125;
+</code></pre>
+<blockquote>
+<p>通过F12可以看出来，错位的列使用的css宽度样式实际上是被隐藏的前置列</p>
+</blockquote>
+<div style="float:left;border:solid1px000;margin:20px,20px;">
+<img src=https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/table%E5%8A%A8%E6%80%81%E5%88%97%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E9%94%99%E4%BD%8D%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/%E5%85%83%E7%B4%A01.PNG />
+</div>
+
+<div style="float:left;border:solid1px000;margin:20px,20px;">
+<img src=https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/table%E5%8A%A8%E6%80%81%E5%88%97%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E9%94%99%E4%BD%8D%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/%E5%85%83%E7%B4%A02.PNG />
+</div>
+
+<pre><code>这个问题其实是由v-if引起的，我们一般控制页面元素显示都是采用v-if或者v-show。
+其中两者的不同在于v-if是在dom树中将元素删除，而v-show是将元素的display属性置为none。
+在el-table中我简单的使用index来做了v-for循环中的key值，这个导致了不同的列可能会使用到相同的key值，这个导致了列渲染到其他列的宽度。
+</code></pre>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
+<li><p>通过随机数来为v-for的key值赋值，这样保证动态列每次删除或者重新生成不会出现相同的key值。</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table-column</span><br><span class="line">:show-overflow-tooltip=&quot;tdWrap&quot;</span><br><span class="line">:align=&quot;x.align&quot;</span><br><span class="line">:header-align=&quot;x.headerAlign&quot;</span><br><span class="line">:key=&quot;x.field+&#x27;&#x27;+Math.random()&quot;</span><br><span class="line">:label=&quot;x.name&quot;</span><br><span class="line">:prop=&quot;x.sortModel&quot;</span><br><span class="line">:width=&quot;x.width&quot;</span><br><span class="line">:min-width=&quot;x.minWidth&quot;</span><br><span class="line">:fixed=&quot;x.fixed ? x.fixed : false&quot;</span><br><span class="line">v-for=&quot;x in activeTableHeader&quot;</span><br><span class="line">:sortable=&quot;x.sort === true ? &#x27;custom&#x27; : false&quot;</span><br><span class="line">&gt;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">    activeTableHeader: function() &#123;</span><br><span class="line">        return this.tableHeader.filter(function(header) &#123;</span><br><span class="line">            return !header.hidden;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在这个代码里同时优化了v-for与v-if同时使用的问题，这个是参照官方文档通过计算属性将原有的v-for与v-if进行了优化</p>
+</blockquote>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/16/1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="位菠萝">
+      <meta itemprop="description" content="我准备好了~我准备好了~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="位菠萝的菠萝屋">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/16/1/" class="post-title-link" itemprop="url">element表格组件滚动条遮挡数据问题</a>
         </h2>
 
         <div class="post-meta">
@@ -417,7 +546,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
