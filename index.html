@@ -162,6 +162,278 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/27/12271846/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="位菠萝">
+      <meta itemprop="description" content="我准备好了~我准备好了~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="位菠萝的菠萝屋">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/27/12271846/" class="post-title-link" itemprop="url">VMware与Centos安装步骤与虚拟机配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-27 18:45:44 / 修改时间：20:37:43" itemprop="dateCreated datePublished" datetime="2021-12-27T18:45:44+08:00">2021-12-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">Linux学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h2><blockquote>
+<p>提前下载VMware安装包与Centos的镜像文件</p>
+</blockquote>
+<ul>
+<li>Centos下载的是Centos7.6版本，<a target="_blank" rel="noopener" href="https://vault.centos.org/7.6.1810/isos/x86_64/">Centos下载地址</a></li>
+<li>VMware下载的是16.1版本，<a target="_blank" rel="noopener" href="https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html">VMware下载地址</a></li>
+<li>Vmware一般是有一个月的免费试用期的，<a target="_blank" rel="noopener" href="http://www.520xiazai.com/soft/VMware-Workstation-16.html">VMware秘钥</a></li>
+</ul>
+<h2 id="VMware安装与虚拟机新建"><a href="#VMware安装与虚拟机新建" class="headerlink" title="VMware安装与虚拟机新建"></a>VMware安装与虚拟机新建</h2><ol>
+<li><strong>Vmware的安装</strong><br>VMware安装包傻瓜式安装，一直下一步到程序安装完成。</li>
+<li><strong>新建虚拟机与配置</strong><br>安装成后打开VMware，文件-&gt;新建虚拟机，选择典型配置，然后跟随向导进行配置，需要注意的是需要在虚拟机设置的时候选择合适的配置，下面是我的安装向导配置。</li>
+</ol>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE/%E9%85%8D%E7%BD%AE.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">选择典型</div>
+</center>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE/%E5%90%91%E5%AF%BC.png">
+</center>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE/%E5%90%91%E5%AF%BC1.png">
+
+</center>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%2F%E5%90%91%E5%AF%BC3.png">
+</center>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%2F%E5%90%91%E5%AF%BC4.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">根据向导进行基础配置</div>
+</center>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%2F%E5%90%91%E5%AF%BC6.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">进行虚拟机的配置</div>
+</center>
+
+<p>==首先根据自己的主机cpu核数来为虚拟机分配处理器；<br>在网络选项的时候会存在三种网络连接方式，这个选择NAT,至于三者区别会在文章后序介绍;<br>在使用ISO映像文件的时候选择提前下载好的Centos7的映像文件。==</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%2F%E5%90%91%E5%AF%BC7.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">配置完成后运行虚拟机，开始虚拟机其他配置，首先install Centos7</div>
+</center>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%2F%E5%90%91%E5%AF%BC8.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">选择操作系统的语言</div>
+</center>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%2F%E5%90%91%E5%AF%BC9.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">选择完语言之后进行系统软件的安装配置，在软件选择这里我们不用最小的默认安装，因为最小安装是默认没有图形界面和gcc等开发环境的，因此我们按照图中的选择进行选择，默认安装gcc等开发环境</div>
+</center>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%2F%E5%90%91%E5%AF%BC10.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">使用Linux操作系统最后自己进行一下系统的分区，选择我要配置分区</div>
+</center>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%2F%E5%90%91%E5%AF%BC11.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">这是一般的分区配置，这个在文章后序会有讲到</div>
+</center>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%2F%E5%90%91%E5%AF%BC12.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">最后设置root角色的密码，同时最好在创建一个普通用户</div>
+</center>
+
+<h2 id="虚拟机新建注意问题"><a href="#虚拟机新建注意问题" class="headerlink" title="虚拟机新建注意问题"></a>虚拟机新建注意问题</h2><ol>
+<li><p><strong>Linux网络连接的三种方式</strong></p>
+<ul>
+<li><strong>桥接模式</strong>： 虚拟系统与主机网段相同，虚拟机可以直接连通其他主机，但是容易引起ip冲突。</li>
+<li><strong>NAT模式</strong>： 网络地址转换，虚拟系统与外部通讯并且不引起ip冲突，参考公司的服务器的内外服务器结构。</li>
+<li><strong>主机模式</strong>：独立系统，不与外部通讯</li>
+</ul>
+</li>
+<li><p><strong>一般Linux分区</strong></p>
+<ul>
+<li><strong>boot分区</strong>：引导分区，一般是1G</li>
+<li><strong>swap分区</strong>：交换分区，一般与分配内存大小一致，==swap分区可以临时充当内存==</li>
+<li><strong>root分区</strong>：根分区，剩余内存</li>
+</ul>
+</li>
+<li><p><strong>KDUMP</strong><br>KDUMP是内核崩溃转储机制，内核崩溃的时候将系统数据捕获下来，生产环境需要开启，学习就不开了。</p>
+</li>
+</ol>
+<h2 id="虚拟机的基础操作"><a href="#虚拟机的基础操作" class="headerlink" title="虚拟机的基础操作"></a>虚拟机的基础操作</h2><ol>
+<li><p><strong>虚拟机克隆</strong></p>
+<ul>
+<li>直接拷贝一份安装好的虚拟机文件：在创建虚拟机的时候会指定本地目录，直接拷贝本地文件</li>
+<li>使用VM进行克隆操作（先关闭需要克隆的Linux系统）<ul>
+<li>创建链接克隆：对原虚拟机的引用，需要原虚拟机可以访问，内存需求较少</li>
+<li>创建完整克隆：完整克隆原虚拟机，但是桥接方式连接网络的话ip也会被克隆过去</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>虚拟机快照</strong><br>==使用虚拟机系统的时候，想要回到原先的某一个状态，可以通过vmware的快照管理，用游戏的存档读档来理解==<br>右键虚拟机选择快照选项，有快照与快照管理功能，如下图。</p>
+</li>
+</ol>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%2F%E5%BF%AB%E7%85%A7.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">快照不是越多越好，快照会磁盘空间</div>
+</center>
+
+<ol start="3">
+<li><strong>虚拟机的迁移与删除</strong></li>
+</ol>
+<p>VM中的虚拟机本质就是文件，文件或文件夹整体拷贝与删除，也可以用vm提供的移除功能</p>
+<ol start="4">
+<li><strong>VMTools的使用</strong><ul>
+<li><strong>安装vmtools</strong>：安装可以根据可视化操作来进行安装或者利用压缩包来安装<ul>
+<li>将VMwareTools-10.3.23-16594550.tar.gz压缩包复制到/opt目录下进行解压，进入解压后的目录，运行vmware-install.pl</li>
+</ul>
+</li>
+<li><strong>设置共享文件夹</strong>：在主机单独设置一个文件夹作为主机与虚拟机的交换区，并在虚拟机的设置中将共享文件夹设置为该文件夹<center>
+<img style="border-radius: 0.3125em;
+box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%2F%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9.png">
+<br>
+<div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">我在主机的D盘设置了一个叫做VMShare的文件夹作为共享文件夹</div>
+</center></li>
+</ul>
+</li>
+</ol>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%2F%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9Linux.png">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">在主机中新建一个txt文件，可以在虚拟机的这个路径来查看共享的文件</div>
+</center>
+
+<p>==注意：这个使用vmtools来进行共享文件要用root账户来进行操作，复制普通用户是看不到共享文件夹的，如果root账户也看不到的话，可以在设置里将共享文件夹禁用在开启==
+    </p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/20/12201/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -530,20 +802,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
