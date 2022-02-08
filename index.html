@@ -162,6 +162,74 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/08/20220208/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="位菠萝">
+      <meta itemprop="description" content="我准备好了~我准备好了~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="位菠萝的菠萝屋">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/08/20220208/" class="post-title-link" itemprop="url">异步请求CloseableHttpAsyncClient的使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-08 18:33:09 / 修改时间：18:37:32" itemprop="dateCreated datePublished" datetime="2022-02-08T18:33:09+08:00">2022-02-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">工作</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近项目有个小需求，需要发送短信验证码，而我们用的短信发送平台是由其他机构提供的，我们只能通过请求前置机并由前置机进行nginx转发来调用实际短信平台的WebService服务。<br>由于验证码不会影响业务逻辑，因此我这里开始采用的时异步http请求，也就是使用的httpclient在4.0后提供新的api CloseableHttpAsyncClient。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/22/20220122/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -969,12 +1037,8 @@ padding: 2px;">我在主机的D盘设置了一个叫做VMShare的文件夹作为
 <li>在 main.js 中全局引入</li>
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//引入样式文件 </span><br><span class="line">import &#x27;../static/css/tableFixed.css&#x27;</span><br></pre></td></tr></table></figure>
-<blockquote>
 <p>修改后列表操作列最后一行成功显示完全</p>
-</blockquote>
-<h2 id="引申问题"><a href="#引申问题" class="headerlink" title="引申问题"></a>引申问题</h2><blockquote>
-<p>冻结列与侧边滚动条会引起冻结列的错位，如下图的操作列与数据都出现了错位现象</p>
-</blockquote>
+<h2 id="引申问题"><a href="#引申问题" class="headerlink" title="引申问题"></a>引申问题</h2><p>冻结列与侧边滚动条会引起冻结列的错位，如下图的操作列与数据都出现了错位现象</p>
 <center class = "half">
 <img src = https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/el-table%E5%86%BB%E7%BB%93%E5%88%97%E5%AF%BC%E8%87%B4%E9%94%99%E4%BD%8D%E9%97%AE%E9%A2%98/%E8%A1%A8%E6%A0%BC%E9%94%99%E4%BD%8D1.PNG  width = "50%" height="330px" align = left>
 
@@ -1144,7 +1208,7 @@ padding: 2px;">我在主机的D盘设置了一个叫做VMShare的文件夹作为
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1157,7 +1221,7 @@ padding: 2px;">我在主机的D盘设置了一个叫做VMShare的文件夹作为
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
