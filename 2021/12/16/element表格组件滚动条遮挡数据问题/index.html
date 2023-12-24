@@ -1,0 +1,552 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="スポンジ・ボブです" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="スポンジ・ボブです" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="スポンジ・ボブです" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Element,Bug" />
+
+
+<link rel="canonical" href="http://example.com/2021/12/16/element%E8%A1%A8%E6%A0%BC%E7%BB%84%E4%BB%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E9%81%AE%E6%8C%A1%E6%95%B0%E6%8D%AE%E9%97%AE%E9%A2%98/">
+
+
+
+  <title>
+element表格组件滚动条遮挡数据问题 - 工作 |
+深海の.大菠萝 = スポンジ・ボブです</title>
+<meta name="generator" content="Hexo 7.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">element表格组件滚动条遮挡数据问题
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2021-12-16 19:24:07">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-12-16T19:24:07+08:00">2021-12-16</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">深海の.大菠萝</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicm07ih54j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclhtuo6nj20zk0m8ttm.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E5%B7%A5%E4%BD%9C/" itemprop="item" rel="index" title="分类于 工作"><span itemprop="name">工作</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/16/element%E8%A1%A8%E6%A0%BC%E7%BB%84%E4%BB%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E9%81%AE%E6%8C%A1%E6%95%B0%E6%8D%AE%E9%97%AE%E9%A2%98/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="位菠萝">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="スポンジ・ボブです">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="问题描述"><a class="markdownIt-Anchor" href="#问题描述">#</a> 问题描述</h2>
+<p>最近在工作中经常使用 ElementUI 的表格组件，发现如果 EL-TABLE 组件的 EL-TABLE-COLUMN 加了 FIXED 属性列固定后样式后会出现高度错乱问题，这样会导致表格数据有被遮挡，bug 样式及代码如下</p>
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    data-src="https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/el-table%E5%86%BB%E7%BB%93%E5%88%97%E5%AF%BC%E8%87%B4%E9%94%99%E4%BD%8D%E9%97%AE%E9%A2%98/bug.PNG">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">BUG截图</div>
+</center>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table</span><br><span class="line">  v-loading=&quot;loading&quot;</span><br><span class="line">  :data=&quot;configurationData&quot;</span><br><span class="line">  :row-class-name=&quot;configurationRowClassName&quot;</span><br><span class="line">  @selection-change=&quot;configurationDetailSelectionChange&quot;</span><br><span class="line">  stripe</span><br><span class="line">  style=&quot;width: 100%&quot;</span><br><span class="line">  ref=&quot;configurationTb&quot;</span><br><span class="line">&gt;</span><br><span class="line">  &lt;el-table-column fixed=&quot;left&quot; type=&quot;selection&quot; width=&quot;30&quot; align=&quot;center&quot; /&gt;</span><br><span class="line">  &lt;el-table-column label=&quot;id&quot; prop=&quot;id&quot; v-if=&quot;false&quot;&gt;&lt;/el-table-column&gt;</span><br><span class="line">  &lt;el-table-column</span><br><span class="line">    fixed=&quot;left&quot;</span><br><span class="line">    label=&quot;序号&quot;</span><br><span class="line">    align=&quot;center&quot;</span><br><span class="line">    prop=&quot;xh&quot;</span><br><span class="line">    width=&quot;50&quot;</span><br><span class="line">  &gt;&lt;/el-table-column</span><br><span class="line">&gt;&lt;/el-table&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="问题分析"><a class="markdownIt-Anchor" href="#问题分析">#</a> 问题分析</h2>
+<p>经过排查基本可以确定这个样式 bug 是因为 el-table 同时存在冻结列与滚动条导致的。<br>
+在列加入冻结列，即 <strong>fixed=“right”</strong> 或者<strong> fixed=“left”</strong> 之后，页面会增加缓存，再次切换回来就会导致高度没有计算 padding 值所有会出现高度错乱的问题，这样数据便会被遮挡。</p>
+<h2 id="解决方法"><a class="markdownIt-Anchor" href="#解决方法">#</a> 解决方法</h2>
+<p>增加一个样式重新计算这部分高度来覆盖原有的样式</p>
+<ul>
+<li>创建一个新的 css 文件 tableFixed.css</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/* 解决存在冻结列导致最后一行数据被遮挡问题 */ </span><br><span class="line">.el-table__fixed,</span><br><span class="line">.el-table__fixed-right &#123; height: 100% !important; &#125; </span><br><span class="line">.el-table__fixed,</span><br><span class="line">.el-table__fixed-left &#123; height: 100% !important; &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 main.js 中全局引入</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//引入样式文件 </span><br><span class="line">import &#x27;../static/css/tableFixed.css&#x27;</span><br></pre></td></tr></table></figure>
+<p>修改后列表操作列最后一行成功显示完全</p>
+<h2 id="引申问题"><a class="markdownIt-Anchor" href="#引申问题">#</a> 引申问题</h2>
+<p>冻结列与侧边滚动条会引起冻结列的错位，如下图的操作列与数据都出现了错位现象</p>
+<center class = "half">
+<img src = https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/el-table%E5%86%BB%E7%BB%93%E5%88%97%E5%AF%BC%E8%87%B4%E9%94%99%E4%BD%8D%E9%97%AE%E9%A2%98/%E8%A1%A8%E6%A0%BC%E9%94%99%E4%BD%8D1.PNG  width = "50%" height="330px" align = left>
+<img src = https://wbl-1302681813.cos.ap-nanjing.myqcloud.com/el-table%E5%86%BB%E7%BB%93%E5%88%97%E5%AF%BC%E8%87%B4%E9%94%99%E4%BD%8D%E9%97%AE%E9%A2%98/%E8%A1%A8%E6%A0%BC%E9%94%99%E4%BD%8D2.PNG  width = "50%" height="330px" align = right>
+</center>
+<p>其实这是因为 elementui 的 table 组件的滚动条在 window 环境下会默认显示，这个为滚动条预留的宽度导致数据发生了错位，我们可以去查看 element 下的源码关于 table 的滚动条宽度是怎么计算的</p>
+<ul>
+<li>elementui 中 table 组件关于滚动条定义的部分源码</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-if</span>=<span class="string">&quot;rightFixedColumns.length &gt; 0&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">v-mousewheel</span>=<span class="string">&quot;handleFixedMousewheel&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">class</span>=<span class="string">&quot;el-table__fixed-right&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">ref</span>=<span class="string">&quot;rightFixedWrapper&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">:style</span>=<span class="string">&quot;[&#123;</span></span></span><br><span class="line"><span class="string"><span class="tag">    width: layout.rightFixedWidth ? layout.rightFixedWidth + &#x27;px&#x27; : &#x27;&#x27;,</span></span></span><br><span class="line"><span class="string"><span class="tag">    right: layout.scrollY ? (border ? layout.gutterWidth : (layout.gutterWidth || 0)) + &#x27;px&#x27; : &#x27;&#x27;</span></span></span><br><span class="line"><span class="string"><span class="tag">  &#125;,</span></span></span><br><span class="line"><span class="string"><span class="tag">  fixedHeight]&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中主要的宽度由 gutterWidth 控制，通过查找 table-layout.js 可以找到 gutterWidth 的定义方式</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.gutterWidth = scrollbarWidth();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>最后找到 scrollbar-width.js 来找到滚动条的实际实现方法</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#x27;vue&#x27;;</span><br><span class="line">let scrollBarWidth;</span><br><span class="line">export default function() &#123;</span><br><span class="line">  if (Vue.prototype.$isServer) return 0;</span><br><span class="line">  if (scrollBarWidth !== undefined) return scrollBarWidth;</span><br><span class="line"></span><br><span class="line">  const outer = document.createElement(&#x27;div&#x27;);</span><br><span class="line">  outer.className = &#x27;el-scrollbar__wrap&#x27;;</span><br><span class="line">  outer.style.visibility = &#x27;hidden&#x27;;</span><br><span class="line">  outer.style.width = &#x27;100px&#x27;;</span><br><span class="line">  outer.style.position = &#x27;absolute&#x27;;</span><br><span class="line">  outer.style.top = &#x27;-9999px&#x27;;</span><br><span class="line">  document.body.appendChild(outer);</span><br><span class="line"></span><br><span class="line">  const widthNoScroll = outer.offsetWidth;</span><br><span class="line">  outer.style.overflow = &#x27;scroll&#x27;;</span><br><span class="line"></span><br><span class="line">  const inner = document.createElement(&#x27;div&#x27;);</span><br><span class="line">  inner.style.width = &#x27;100%&#x27;;</span><br><span class="line">  outer.appendChild(inner);</span><br><span class="line"></span><br><span class="line">  const widthWithScroll = inner.offsetWidth;</span><br><span class="line">  outer.parentNode.removeChild(outer);</span><br><span class="line">  scrollBarWidth = widthNoScroll - widthWithScroll;</span><br><span class="line"></span><br><span class="line">  return scrollBarWidth;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>其实最终实现的方法很简单粗暴，首先创建了一个外部 outer 的 div，并强制让其出现滚动条，然后创建一个内部 inner 的 div，通过 <strong>scrollBarWidth = widthNoScroll - widthWithScroll;</strong> 来计算出滚动条的宽度。<br>
+因此我们只需要控制返回的 <strong>scrollBarWidth</strong> 为 0 就可以解决这个问题，我们从代码中也可以看出来我们需要修改的样式为 <strong>el-scrollbar__wrap</strong> ，同样的在刚刚的 tableFixed.css 文件中加入如下的样式代码。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/* 解决操作栏按钮错位问题 */</span><br><span class="line">.el-table__body-wrapper::-webkit-scrollbar &#123;</span><br><span class="line">  width: 15px;</span><br><span class="line">  height: 15px;</span><br><span class="line">&#125;</span><br><span class="line">.el-table__body-wrapper::-webkit-scrollbar-thumb &#123;</span><br><span class="line">  background-color: #ddd;</span><br><span class="line">  border-radius: 3px;</span><br><span class="line">&#125;</span><br><span class="line">.el-scrollbar__wrap::-webkit-scrollbar &#123;</span><br><span class="line">  width: 15px;</span><br><span class="line">  height: 15px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样刚刚计算公式计算出的结果就是 0px，也就不会出现为滚动条预留位置而导致的错位问题了。</p>
+
+      <div class="tags">
+          <a href="/tags/Element/" rel="tag"><i class="ic i-tag"></i> Element</a>
+          <a href="/tags/Bug/" rel="tag"><i class="ic i-tag"></i> Bug</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2021-12-16 21:21:14" itemprop="dateModified" datetime="2021-12-16T21:21:14+08:00">2021-12-16</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="位菠萝 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="位菠萝 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="位菠萝 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>位菠萝 <i class="ic i-at"><em>@</em></i>スポンジ・ボブです
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2021/12/16/element%E8%A1%A8%E6%A0%BC%E7%BB%84%E4%BB%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E9%81%AE%E6%8C%A1%E6%95%B0%E6%8D%AE%E9%97%AE%E9%A2%98/" title="element表格组件滚动条遮挡数据问题">http://example.com/2021/12/16/element表格组件滚动条遮挡数据问题/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/12/20/el-table%E5%8A%A8%E6%80%81%E5%88%97%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E9%94%99%E4%BD%8D%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitht3xtj20zk0m8k5v.jpg" title="el-table动态列导致数据错位问题解决">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 工作</span>
+  <h3>el-table动态列导致数据错位问题解决</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text"> 问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text"> 问题分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text"> 解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%B3%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text"> 引申问题</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/2021/12/16/element%E8%A1%A8%E6%A0%BC%E7%BB%84%E4%BB%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E9%81%AE%E6%8C%A1%E6%95%B0%E6%8D%AE%E9%97%AE%E9%A2%98/" rel="bookmark" title="element表格组件滚动条遮挡数据问题">element表格组件滚动条遮挡数据问题</a></li><li><a href="/2021/12/20/el-table%E5%8A%A8%E6%80%81%E5%88%97%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E9%94%99%E4%BD%8D%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" rel="bookmark" title="el-table动态列导致数据错位问题解决">el-table动态列导致数据错位问题解决</a></li><li><a href="/2022/01/04/HmacSHA256%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%88%90%E7%AD%BE%E5%90%8D%E8%AE%A4%E8%AF%81/" rel="bookmark" title="HmacSHA256使用完成签名认证">HmacSHA256使用完成签名认证</a></li><li><a href="/2022/01/22/el-cascader-%E7%BA%A7%E8%81%94%E9%80%89%E6%8B%A9%E5%99%A8%E8%8E%B7%E5%8F%96value%E4%B8%8Elabel/" rel="bookmark" title="el-cascader 级联选择器获取value与label">el-cascader 级联选择器获取value与label</a></li><li><a href="/2022/02/08/%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82CloseableHttpAsyncClient%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="bookmark" title="异步请求CloseableHttpAsyncClient的使用">异步请求CloseableHttpAsyncClient的使用</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="位菠萝"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">位菠萝</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">9</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">3</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">8</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E4%BD%9C/" title="分类于 工作">工作</a>
+</div>
+
+    <span><a href="/2022/01/22/el-cascader-%E7%BA%A7%E8%81%94%E9%80%89%E6%8B%A9%E5%99%A8%E8%8E%B7%E5%8F%96value%E4%B8%8Elabel/" title="el-cascader 级联选择器获取value与label">el-cascader 级联选择器获取value与label</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E4%BD%9C/" title="分类于 工作">工作</a>
+</div>
+
+    <span><a href="/2021/12/20/el-table%E5%8A%A8%E6%80%81%E5%88%97%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E9%94%99%E4%BD%8D%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="el-table动态列导致数据错位问题解决">el-table动态列导致数据错位问题解决</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E4%BD%9C/" title="分类于 工作">工作</a>
+</div>
+
+    <span><a href="/2021/12/16/element%E8%A1%A8%E6%A0%BC%E7%BB%84%E4%BB%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E9%81%AE%E6%8C%A1%E6%95%B0%E6%8D%AE%E9%97%AE%E9%A2%98/" title="element表格组件滚动条遮挡数据问题">element表格组件滚动条遮挡数据问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%AD%A6%E4%B9%A0/" title="分类于 学习">学习</a>
+</div>
+
+    <span><a href="/2022/02/10/JAVA%E7%9A%84%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/" title="JAVA的反射机制">JAVA的反射机制</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2023/12/24/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E4%BD%9C/" title="分类于 工作">工作</a>
+</div>
+
+    <span><a href="/2022/02/08/%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82CloseableHttpAsyncClient%E7%9A%84%E4%BD%BF%E7%94%A8/" title="异步请求CloseableHttpAsyncClient的使用">异步请求CloseableHttpAsyncClient的使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E4%BD%9C/" title="分类于 工作">工作</a>
+</div>
+
+    <span><a href="/2022/01/04/HmacSHA256%E4%BD%BF%E7%94%A8%E5%AE%8C%E6%88%90%E7%AD%BE%E5%90%8D%E8%AE%A4%E8%AF%81/" title="HmacSHA256使用完成签名认证">HmacSHA256使用完成签名认证</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Linux%E5%AD%A6%E4%B9%A0/" title="分类于 Linux学习">Linux学习</a>
+</div>
+
+    <span><a href="/2021/12/30/%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8ELinux%E7%9B%AE%E5%BD%95%E7%9A%84%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/" title="远程登录Linux服务器与Linux目录的初步了解">远程登录Linux服务器与Linux目录的初步了解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Linux%E5%AD%A6%E4%B9%A0/" title="分类于 Linux学习">Linux学习</a>
+</div>
+
+    <span><a href="/2021/12/27/VMware%E4%B8%8ECentos%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4/" title="VMware与Centos安装步骤与虚拟机配置">VMware与Centos安装步骤与虚拟机配置</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">位菠萝 @ 深海の.大菠萝</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/12/16/element表格组件滚动条遮挡数据问题/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
